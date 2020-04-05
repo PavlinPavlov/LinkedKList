@@ -14,7 +14,7 @@ class KList:
         self.head = None
         self.first_free_kth_element = self.head
 
-    def insert_at_end(self, data):
+    def insert(self, data):
         new_node = KNode(data)
         if self.head:
             current = self.head
