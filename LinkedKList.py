@@ -33,14 +33,26 @@ class KList:
             self.first_free_kth_element = self.first_free_kth_element.next_element
 
     def search(self, position):
+        normal_search_count = position % self.k
+        k_search_count = position // self.k
+        print("Debug - K-th searches:", k_search_count)
+        print("Debug - Normal searches:", normal_search_count)
+
         current_element = self.head
-        for current_index in range(0, position):
+
+        for current_index in range(0, k_search_count):  # current_index is not used
+            if current_element.next_kth_element:
+                current_element = current_element.next_kth_element
+            else:
+                return "No such element!"
+
+        for current_index in range(0, normal_search_count):  # current_index is not used
             if current_element.next_element:
                 current_element = current_element.next_element
             else:
                 return "No such element!"
-        # return current_element.data
-        return current_element
+
+        return current_element.data
 
     def print(self):
         current = self.head
