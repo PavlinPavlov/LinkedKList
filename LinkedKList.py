@@ -26,7 +26,7 @@ class KList:
 
         self.size += 1
 
-        if self.size > self.k:
+        if self.size > self.k:  # skipping creating k links until we have k + 1 elements in the list
             if self.first_free_kth_element is None:
                 self.first_free_kth_element = self.head
             self.first_free_kth_element.next_kth_element = new_node
@@ -53,6 +53,34 @@ class KList:
                 return "No such element!"
 
         return current_element.data
+
+    def remove_at(self, remove_position):
+        if remove_position >= self.size:
+            return "The list does not have a element at position " + str(remove_position)
+
+        if remove_position == 0:
+            self.head = self.head.next_element
+
+        curr_index = 0
+        first_to_alter_index = remove_position - self.k
+        last_to_alter_index = remove_position - 1
+
+        current_element = self.head
+        while current_element:
+            if (curr_index >= first_to_alter_index) & (curr_index < last_to_alter_index):
+                if current_element.next_kth_element is not None:
+                    current_element.next_kth_element = current_element.next_kth_element.next_element
+
+            if curr_index == last_to_alter_index:
+                if current_element.next_kth_element is not None:
+                    current_element.next_kth_element = current_element.next_kth_element.next_element
+                current_element.next_element = current_element.next_element.next_element
+                break
+
+            curr_index += 1
+            current_element = current_element.next_element
+
+        return "Done"
 
     def print(self):
         current = self.head
