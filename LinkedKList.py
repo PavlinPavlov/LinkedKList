@@ -33,12 +33,20 @@ class KList:
             self.first_free_kth_element = self.first_free_kth_element.next
 
     def insert_at(self, data, insert_position):
+        if insert_position == self.size:
+            self.insert(data)
+        elif insert_position < 0 | insert_position > self.size:
+            print("The list does not have a element at position", str(insert_position))
+
         new_node = KNode(data)
 
         if 0 == insert_position:
             new_node.next = self.head
-            new_node.next_kth = self.search(self.k - 1)
             self.head = new_node
+            current_element = self.head
+            for current_index in range(0, self.k):
+                current_element = current_element.next
+            new_node.next_kth = current_element
 
         current_index = 0
         first_alter_index = insert_position - self.k
@@ -55,6 +63,7 @@ class KList:
 
             if current_index == last_alter_index:
                 new_node.next = current_element.next
+                new_node.next_kth = current_element.next_kth
                 current_element.next = new_node
                 break
 
@@ -86,10 +95,12 @@ class KList:
 
     def remove_at(self, remove_position):
         if remove_position >= self.size | remove_position < 0:
-            return "The list does not have a element at position " + str(remove_position)
+            print("The list does not have a element at position:", str(remove_position))
 
         if remove_position == 0:
             self.head = self.head.next
+            self.size -= 1
+            return
 
         current_index = 0
         first_alter_index = remove_position - self.k
@@ -105,15 +116,21 @@ class KList:
                 if current_element.next_kth is not None:
                     current_element.next_kth = current_element.next_kth.next
                 current_element.next = current_element.next.next
+                self.size -= 1
                 break
 
             current_index += 1
             current_element = current_element.next
 
-        return "Done"
-
     def print(self):
+        print("List size:", self.size)
         current = self.head
-        while current:
-            print(current.data)
+        for current_index in range(0, self.size):
+            current_element_output = current.data if current is not None else "N/A"
+            next_element_output = current.next.data if current.next is not None else "N/A"
+            kth_element_output = current.next_kth.data if current.next_kth is not None else "N/A"
+            print("Index:", current_index,
+                  "\tElement:", current_element_output,
+                  "\tNext:", next_element_output,
+                  "\tK-th", kth_element_output)
             current = current.next
