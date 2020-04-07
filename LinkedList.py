@@ -5,7 +5,7 @@ class Node:
         self.next = None
 
 
-class LinkedList:
+class List:
 
     def __init__(self):
         self.size = 0
