@@ -1,20 +1,18 @@
+from asyncio import sleep
+
 from LinkedKList import KList, KNode
-from Reader import create_file, make_list_from_file
+from LinkedList import List
+from FileUtils import create_file, make_list_from_file
+import datetime
 
 if __name__ == '__main__':
-    ll = KList(3)
-    ll.insert(100)
-    ll.insert(11)
-    ll.insert(22)
-    ll.insert(33)
-    ll.insert(44)
-    ll.insert(55)
-    ll.insert(66)
-    ll.insert(77)
-    ll.insert(88)
-    ll.insert(99)
-    ll.insert(1010)
-    ll.insert(1111)
+    k_list = make_list_from_file("binfile_5_000_000.bin", 1000)
+    l_list = make_list_from_file("binfile_5_000_000.bin")
 
-    k_list = make_list_from_file("binfile.bin", 5)
-    k_list.print()
+    print(datetime.datetime.now())
+    print(l_list.search(4_670_045))
+    print(datetime.datetime.now())
+
+    print(datetime.datetime.now())
+    print(k_list.search(4_670_045))
+    print(datetime.datetime.now())

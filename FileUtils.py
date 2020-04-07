@@ -4,7 +4,7 @@ from LinkedKList import KList
 from LinkedList import List
 
 
-def make_list_from_file(path="binfile.bin", k=10):
+def make_list_from_file(path="binfile.bin", k=1):
     file_d = open(path, "rb")
     file_content_list = list(file_d.read())
 
