@@ -1,4 +1,5 @@
 from LinkedKList import KList, KNode
+from Reader import create_file, make_list_from_file
 
 if __name__ == '__main__':
     ll = KList(3)
@@ -15,10 +16,5 @@ if __name__ == '__main__':
     ll.insert(1010)
     ll.insert(1111)
 
-    print("Debug - search before removal:", ll.search(11))
-    ll.print()
-    ll.remove_at(4)
-    ll.remove_at(4)
-    ll.remove_at(3)
-    print("Debug - search after removal:", ll.search(11))
-    ll.print()
+    k_list = make_list_from_file("binfile.bin", 5)
+    k_list.print()
