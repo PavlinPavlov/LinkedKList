@@ -55,52 +55,6 @@ class KList:
             self.first_free_kth_element.next_kth = new_node
             self.first_free_kth_element = self.first_free_kth_element.next
 
-    # def insert_at(self, data, insert_position):
-    #     if insert_position == self.size:
-    #         self.insert(data)
-    #     elif insert_position < 0 | insert_position > self.size:
-    #         print("The list does not have a element at position", str(insert_position))
-    #
-    #     new_node = KNode(data)
-    #
-    #     if 0 == insert_position:
-    #         new_node.next = self.head
-    #         self.head = new_node
-    #         current_element = self.head
-    #         for current_index in range(0, self.k):
-    #             current_element = current_element.next
-    #         new_node.next_kth = current_element
-    #         self.size += 1
-    #         return
-    #
-    #     current_index = 0
-    #     first_alter_index = insert_position - self.k
-    #     last_alter_index = insert_position - 1
-    #     placeholder = None
-    #
-    #     current_element = self.head
-    #     previous = None
-    #     while current_element:
-    #         self.print()
-    #         if (current_index > first_alter_index) & (current_index < last_alter_index):
-    #             current_element.next_kth = placeholder
-    #
-    #         if current_index == first_alter_index:
-    #             current_element.next_kth = new_node
-    #
-    #         if current_index == last_alter_index:
-    #             new_node.next = current_element.next
-    #             new_node.next_kth = current_element.next_kth
-    #             current_element.next = new_node
-    #             break
-    #
-    #         current_index += 1
-    #         if (current_index > first_alter_index) & (current_index < last_alter_index):
-    #             placeholder = previous.next_kth
-    #         previous = current_element
-    #         current_element = current_element.next
-    #     self.size += 1
-
     def search(self, position):
         normal_search_count = position % self.k
         k_search_count = position // self.k  # integer division
