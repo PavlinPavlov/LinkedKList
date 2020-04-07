@@ -8,11 +8,34 @@ class KNode:
 
 class KList:
 
-    def __init__(self, k=10):
+    def __init__(self, k=10, input_list=None):
         self.k = k
         self.size = 0
         self.head = None
         self.first_free_kth_element = self.head
+        if input_list is not None:
+            self.__create(input_list)
+
+    def __create(self, input_list):
+        previous_element = None
+        self.first_free_kth_element = None
+        for i in range(len(input_list)):
+            new_node = KNode(input_list[i])
+            if self.head:
+                current_element = new_node
+                previous_element.next = current_element
+                previous_element = current_element
+            else:
+                self.head = new_node
+                previous_element = self.head
+
+            self.size += 1
+
+            if self.size > self.k:  # skipping creating k links until we have k + 1 elements in the list
+                if self.first_free_kth_element is None:
+                    self.first_free_kth_element = self.head
+                self.first_free_kth_element.next_kth = new_node
+                self.first_free_kth_element = self.first_free_kth_element.next
 
     def insert(self, data):
         new_node = KNode(data)

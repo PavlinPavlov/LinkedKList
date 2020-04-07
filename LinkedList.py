@@ -7,9 +7,22 @@ class Node:
 
 class List:
 
-    def __init__(self):
+    def __init__(self, input_list=None):
         self.size = 0
         self.head = None
+        if input_list:
+            self.__create(input_list)
+
+    def __create(self, input_list):
+
+        self.head = Node(input_list[0])
+        current_element = self.head
+        previous_element = current_element
+        for i in range(1, len(input_list)):
+            current_element = Node(input_list[i])
+            previous_element.next = current_element
+            previous_element = current_element
+            self.size += 1
 
     def insert(self, data):
         new_node = Node(data)
