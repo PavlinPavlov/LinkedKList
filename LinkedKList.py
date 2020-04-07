@@ -1,8 +1,8 @@
 class KNode:
 
-    def __init__(self, data, next_element=None):
+    def __init__(self, data):
         self.data = data
-        self.next = next_element
+        self.next = None
         self.next_kth = None
 
 
