@@ -106,10 +106,13 @@ class KList:
             current_index += 1
             current_element = current_element.next
 
-    def print(self):
+    def print(self, print_count=-1):
         print("List size:", self.size)
         current = self.head
         for current_index in range(0, self.size):
+            if print_count == 0:
+                break
+            print_count -= 1
             current_element_output = current.data if current is not None else "N/A"
             next_element_output = current.next.data if current.next is not None else "N/A"
             kth_element_output = current.next_kth.data if current.next_kth is not None else "N/A"

@@ -16,6 +16,7 @@ class List:
     def __create(self, input_list):
 
         self.head = Node(input_list[0])
+        self.size += 1
         current_element = self.head
         previous_element = current_element
         for i in range(1, len(input_list)):
