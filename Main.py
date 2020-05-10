@@ -4,24 +4,25 @@ from FileUtils import make_list_from_file
 
 if __name__ == '__main__':
     # Controls
-    search_index = 4_999_876
+    search_index = 2_876
     print_count = 200
+    file_name = "binfile_5_000.bin"
 
     print("\nCreating normal list ...")
     start_time = time.time()
-    l_list = make_list_from_file("binfile_5_000_000.bin")
+    l_list = make_list_from_file(file_name)
     end_time = time.time() - start_time
     print("Normal list ({0}) created for {1:3.6} seconds".format(l_list.size, end_time))
 
     print("\nCreating K-100 list ...")
     start_time = time.time()
-    k_list_100 = make_list_from_file("binfile_5_000_000.bin", 100)
+    k_list_100 = make_list_from_file(file_name, 100)
     end_time = time.time() - start_time
     print("K-100 list ({0}) created for {1:3.6} seconds".format(k_list_100.size, end_time))
 
     print("\nCreating K-1000 list ...")
     start_time = time.time()
-    k_list_1000 = make_list_from_file("binfile_5_000_000.bin", 1000)
+    k_list_1000 = make_list_from_file(file_name, 1000)
     end_time = time.time() - start_time
     print("K-1000 list ({0}) created for {1:3.6} seconds".format(k_list_1000.size, end_time))
 
