@@ -69,7 +69,7 @@ class List:
             current_element = current_element.next
         self.size -= 1
 
-    def print(self):
+    def print_m(self):
         print("List size:", self.size)
         current = self.head
         for current_index in range(0, self.size):
