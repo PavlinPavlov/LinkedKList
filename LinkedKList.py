@@ -106,7 +106,7 @@ class KList:
             current_index += 1
             current_element = current_element.next
 
-    def print_m(self, print_count=-1):
+    def print_list(self, print_count=-1):
         print("List size:", self.size)
         current = self.head
         for current_index in range(0, self.size):

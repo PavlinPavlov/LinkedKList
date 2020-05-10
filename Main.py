@@ -46,4 +46,4 @@ if __name__ == '__main__':
 
     input("\n\nPress ENTER to display {0} elements of the {1} list ...".format(print_count, "K-100"))
     print("\n\nPrinting {0} elements from {1} list".format(print_count, "K-100"))
-    k_list_100.print(print_count)
+    k_list_100.print_list(print_count)
